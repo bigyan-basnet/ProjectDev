@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      php: 8.1
+      php: 8.4
     commands:
       - composer install
   build:
@@ -11,7 +11,7 @@ phases:
       - zip -r app.zip . -x "*.git*" "tests/*" "scripts/*"
   post_build:
     commands:
-      - aws s3 cp app.zip s3://your-s3-bucket-name/car-build/app.zip
+      - aws s3 cp app.zip s3://devops-carrental-bucket/car-build/app.zip
 artifacts:
   files:
     - app.zip
