@@ -21,7 +21,7 @@ include('header.php');
   <div class="main-page">
     <div class="background-image"></div>
     <div class="text-container">
-      <h1>Welcome to Car Rental</h1>
+      <h1 style="color:red">Welcome to Car Rental DevOps Release 0.1</h1>
       <p>
         Welcome to our car rental website, where you can browse and book a
         wide range of vehicles at affordable prices. Whether you <br />
