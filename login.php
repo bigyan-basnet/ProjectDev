@@ -21,7 +21,7 @@ ini_set('mysqli.connect_timeout', 5);
 $host = getenv('db_host') ?: 'localhost';
 $user = getenv('db_user') ?: 'root';
 $pass = getenv('db_pass') ?: '';
-$dbname = getenv('db_name') ?: 'car-rental-database';
+$dbname = getenv('db_name') ?: 'car_rental_database';
 
 echo "Connecting to DB...\n";
 $conn = @mysqli_connect($host, $user, $pass, $dbname);
