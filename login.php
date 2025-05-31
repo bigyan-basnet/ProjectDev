@@ -64,16 +64,44 @@ echo "</pre>";
 
 <!DOCTYPE html>
 <html>
-<head><title>Login</title></head>
+
+<head>
+  <title>Responsive Login Form</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
 <body>
-    <h2>Login</h2>
-    <?php if (!empty($message)) echo "<p style='color:red;'>$message</p>"; ?>
-    <form method="POST" action="login.php">
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br><br>
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
-        <input type="submit" name="login" value="Login">
+  <div class="container">
+    <form action="login.php" method="POST">
+      <div class="title">Login</div>
+      <div class="input-box underline">
+        <input type="text" name="username" placeholder="Enter Your Username" required />
+        <div class="underline"></div>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Enter Your Password" required />
+        <div class="underline"></div>
+      </div>
+      <div class="input-box button">
+        <input type="submit" name="login" value="Login" />
+      </div>
     </form>
+    <div class="admin-login">
+      <a href="admin_login.php">Login as admin</a>
+    </div>
+  
+<hr>
+    <div class="register">
+      <a href="registration.php">Create a new account</a>
+    </div>
+  </div>
 </body>
+
 </html>
+
+
+
+
+
