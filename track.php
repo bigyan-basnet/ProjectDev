@@ -2,11 +2,8 @@
     <link rel="stylesheet" href="css/track.css">
     <div class="card-row">
         <?php
-        $con = mysqli_connect('localhost', 'root', '', 'car_rental_database');
+        require_once 'config.php';
 
-        if (!$con) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
 
         $cr = mysqli_query($con, "SELECT * FROM booking") or die(mysqli_error($con));
 
