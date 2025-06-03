@@ -26,10 +26,8 @@ include('header.php');
     </div>
     <section class="card-row">
         <?php
-        $con = mysqli_connect('localhost', 'root', '', 'car_rental_database');
-        if (!$con) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+        require_once 'config.php';
+
         $cr = mysqli_query($con, "SELECT * FROM car WHERE ID NOT IN (SELECT DISTINCT car_model FROM booking)") or die(mysqli_error($con));
         while ($row = mysqli_fetch_assoc($cr)) { ?>
             <div class="card">
