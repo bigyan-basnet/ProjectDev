@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
 
 session_start();
 
@@ -6,30 +7,19 @@ if (isset($_POST['login'])) {
     $uname = $_POST['username'];
     $password = $_POST['password'];
 
-    require_once 'config.php'; // ✅ Using RDS connection from config.php
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    //  else {
-    //     echo "Connected";
-    // }
     if (empty($uname) || empty($password)) {
         echo "you cannot leave username and password empty";
     } else {
-        $sql = "SELECT * FROM user_registration WHERE username='$uname' && is_admin = true";
+        $sql = "SELECT * FROM user_registration WHERE username='$uname' AND is_admin = true";
         $result = mysqli_query($conn, $sql);
         $check = mysqli_fetch_assoc($result);
 
-        if ($check['password'] == $password) {
+        if ($check && $check['password'] == $password) {
             $_SESSION['logged_in'] = true;
             $_SESSION['username'] = $uname;
             header("location:admin_view.php");
         } else {
-            $message = "Username or Password incorrect or User is not admin";
-
-            // Output JavaScript code to display the alert
-            echo "<script>alert('$message');</script>";
+            echo "Incorrect username or password.";
         }
     }
 }
