@@ -20,15 +20,7 @@ session_start();
 
             <?php
 
-            $con = mysqli_connect('localhost', 'root', '', 'car_rental_database');
-
-            if (!$con) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            // else {
-            //     echo "Connected";
-            // }
-
+            require_once 'config.php';
             $cr = mysqli_query($con, "SELECT * FROM car") or die(mysqli_error($con));
             $i = 1;
 
