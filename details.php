@@ -10,8 +10,7 @@
 <body>
 
 <?php
-
-$con = mysqli_connect('localhost', 'root', '', 'car_rental_database');
+require_once 'config.php';
 
 $cr = mysqli_query($con, "SELECT * FROM car") or die( mysqli_error($con)) ;
 $i=1; 
