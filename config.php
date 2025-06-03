@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
-$user = 'root';               // default for XAMPP
-$pass = '';                   // default password is empty
-$dbname = 'car_rental_database';
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
+$dbname = getenv('DB_NAME');
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 
