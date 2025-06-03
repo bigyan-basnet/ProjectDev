@@ -1,21 +1,5 @@
 <?php
-
-
-
-$con = mysqli_connect('localhost', 'root', '', 'car_rental_database');
-
-
-
-
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-// else{
-// 	echo "Connected";
-// }
-
-
-
+require_once 'config.php';
 if (isset($_POST['submit'])) {
     $first_name = mysqli_real_escape_string($con, $_POST['first_name']);
     $middle_name = mysqli_real_escape_string($con, $_POST['middle_name']);
@@ -23,9 +7,6 @@ if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $is_admin = true;
-
-
-
 
     $sql = "SELECT * FROM user_registration WHERE username='$username'";
     $result = mysqli_query($con, $sql);
