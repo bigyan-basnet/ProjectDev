@@ -3,11 +3,7 @@
 include('server.php');
 
 
-$con = mysqli_connect('localhost', 'root', '', 'car_rental_database');
-
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-} 
+require_once 'config.php';
 
 if (isset($_POST['submit'])) {
     $car_my = mysqli_real_escape_string($con, $_POST['car_my']);
