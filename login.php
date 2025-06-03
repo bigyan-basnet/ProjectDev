@@ -1,10 +1,10 @@
 <?php
-// Enable error reporting
+// Show all PHP errors
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Secure session
+// Secure session config
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_strict_mode', 1);
 session_start();
@@ -14,16 +14,17 @@ header("Content-Security-Policy: default-src 'self'");
 header("X-Content-Type-Options: nosniff");
 header("X-Frame-Options: DENY");
 
+// Debug start
 echo "<pre>";
+echo "Connecting to DB...\n";
 
-// DB connection with timeout
+// Database connection with timeout and fallbacks
 ini_set('mysqli.connect_timeout', 5);
 $host = getenv('db_host') ?: 'localhost';
 $user = getenv('db_user') ?: 'root';
 $pass = getenv('db_pass') ?: '';
-$dbname = getenv('db_name') ?: 'car_rental';
+$dbname = getenv('db_name') ?: 'car_rental_database';
 
-echo "Connecting to DB...\n";
 $conn = @mysqli_connect($host, $user, $pass, $dbname);
 
 if (!$conn) {
@@ -31,9 +32,8 @@ if (!$conn) {
 }
 echo "✅ Connected to DB\n";
 
-$message = '';
-
 // Handle login
+$message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $uname = trim($_POST['username']);
     $password = $_POST['password'];
@@ -63,19 +63,19 @@ echo "</pre>";
 ?>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Responsive Login Form</title>
   <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
 <body>
   <div class="container">
     <form action="login.php" method="POST">
       <div class="title">Login</div>
+      <?php if (!empty($message)) echo "<p style='color:red;'>$message</p>"; ?>
       <div class="input-box underline">
         <input type="text" name="username" placeholder="Enter Your Username" required />
         <div class="underline"></div>
@@ -88,20 +88,14 @@ echo "</pre>";
         <input type="submit" name="login" value="Login" />
       </div>
     </form>
+
     <div class="admin-login">
       <a href="admin_login.php">Login as admin</a>
     </div>
-  
-<hr>
+    <hr>
     <div class="register">
       <a href="registration.php">Create a new account</a>
     </div>
   </div>
 </body>
-
 </html>
-
-
-
-
-
