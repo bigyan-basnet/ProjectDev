@@ -1,16 +1,8 @@
-
 <?php
 
 include('header.php');
 
-$con = mysqli_connect('localhost', 'root', '','car_rental_database');
-
-if(!$con){
-    die("Connection failed with datase: " . mysqli_connect_error());
-}
-// else{
-//     echo("Conneccted with databse successfully");
-// }
+require_once 'config.php';
 
 if(isset($_POST['submit'])){
     $name = mysqli_real_escape_string($con, $_POST['name']);
