@@ -1,14 +1,5 @@
 <?php
-
-// $con = mysqli_connect('localhost', 'root', '','car_rental_database');
-
-$host = 'localhost';
-$dbname = 'car_rental_database';
-$username = 'root';
-$password = '';
-
-$con = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-
+require_once 'config.php';
 
 $searchErr = '';
 $car_detail = '';
